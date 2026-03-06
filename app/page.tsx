@@ -8,19 +8,19 @@ export default function Home() {
     <main className="flex flex-col w-full">
       <img
         src="/poohfloat.png"
-        className="absolute top-0 left-1/2 w-120 -translate-x-1/2 animate-float-leaf drop-shadow-md"
+        className="absolute top-0 left-1/2 w-120 z-1 -translate-x-1/2 animate-float-leaf drop-shadow-md"
         alt="floating leaf"
       />
-      <section className="fixed top-15 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-auto h-20 z-10">
+      <section className="fixed top-20 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-auto h-20 z-10">
         <FadeLine>
           <h1 className="text-6xl md:text-xl drop-shadow-md">
-            Chapter 2:
+            Chapter 2
           </h1>
         </FadeLine>
       </section>
 
       <div className="px-[5vh]">
-        <section className="py-[20vh] min-h-[50vh] w-full grid grid-cols-12 items-center">
+        <section className="py-[25vh] min-h-[50vh] w-full grid grid-cols-12 items-center">
           <div className="col-start-1 col-end-6">
             <DelayedFade delay={1000}>
               <h2>Another Little Honey...</h2>
@@ -28,7 +28,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="min-h-[50vh] w-full grid grid-cols-12 items-center">
+        <section className="min-h-[40vh] w-full grid grid-cols-12 items-center">
           <div className="col-start-8 col-end-13 text-right">
             <DelayedFade delay={2000}>
               <h2>...Is On The Way</h2>
@@ -36,7 +36,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="min-h-[20vh] flex items-center justify-center z-50">
+        <section className="min-h-[30vh] flex items-center justify-center z-50">
           <FadeLine>
             <h2>09 • 19 • 26</h2>
             <Link className="ui-button p-1 rounded-md border font-cursive" href="/rsvp-form">

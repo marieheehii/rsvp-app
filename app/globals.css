@@ -32,7 +32,7 @@
   }
 
   100% {
-    transform: translateY(100vh) translateX(-12vh) rotate(-20deg);
+    transform: translateY(100px) translateX(-12vh) rotate(-20deg);
     opacity: 1;
   }
 }
@@ -99,7 +99,7 @@ h3 {
 }
 
 label {
-  @apply text-amber-400 font-elite;
+  @apply text-amber-500 font-elite;
 }
 
 .ui-button {
