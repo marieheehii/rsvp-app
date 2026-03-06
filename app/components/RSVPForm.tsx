@@ -83,16 +83,17 @@ const RSVPForm = () => {
             </div>
             
             <div>
-                <div className="mb-6 bg-amber-100 p-2 rounded-md border border-dashed border-taupe-400
+                <div className=" overflow-hidden mb-6 bg-amber-100 p-2 rounded-md border border-dashed border-taupe-400
 } space-y-2">
                     <p className="text-amber-400 text-center"><b>Baby Shower Date: </b>{date.toLocaleDateString()}</p>
                     <Calendar
                         mode="single"
                         selected={date}
-                        className="rounded-md border w-full bg-white/70 backdrop-blur-sm mt-1 p-2"
+                        className=" rounded-md overflow-hidden border w-full bg-white/70 backdrop-blur-sm mt-1 p-2"
                         defaultMonth={date}
                         onSelect={() => { }}
                         ISOWeek
+                        
                     />
                 </div>
                 <div className="mt-4">
