@@ -6,11 +6,12 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex flex-col w-full">
-      <img
+      <div className="mt-[-30vh]"><img
         src="/poohfloat.png"
         className="absolute top-0 left-1/2 w-120 z-1 -translate-x-1/2 animate-float-leaf drop-shadow-md"
         alt="floating leaf"
-      />
+      /></div>
+      
       <section className="fixed top-20 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-auto h-20 z-10">
         <FadeLine>
           <h1 className="text-6xl md:text-xl drop-shadow-md">
@@ -19,8 +20,8 @@ export default function Home() {
         </FadeLine>
       </section>
 
-      <div className="px-[5vh]">
-        <section className="py-[25vh] min-h-[50vh] w-full grid grid-cols-12 items-center">
+      <div className="px-[5vh] mt-60 z-50">
+        <section className="min-h-[50vh] w-full grid grid-cols-12 items-center">
           <div className="col-start-1 col-end-6">
             <DelayedFade delay={1000}>
               <h2>Another Little Honey...</h2>
