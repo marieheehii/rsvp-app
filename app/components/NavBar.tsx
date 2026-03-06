@@ -11,7 +11,7 @@ export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-sky-200/70 backdrop-blur-md shadow-sm">
+        <nav className="fixed top-0 left-0 w-full z-100 bg-sky-200/70 backdrop-blur-md shadow-sm">
             <div className="mx-auto max-w-5xl flex items-center justify-between px-2 py-4">
                 <span className="font-bold text-xl">
                     <Link className="on-hover" href="/" onClick={() => setIsOpen(false)}><House></House></Link>

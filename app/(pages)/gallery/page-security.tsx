@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const CACHE_MINUTES = 10;
+const CACHE_MINUTES = 30;
 
 export default function ProtectedGallery({ children }: { children: React.ReactNode }) {
     const [password, setPassword] = useState("");

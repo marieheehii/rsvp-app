@@ -83,17 +83,20 @@ const RSVPForm = () => {
             </div>
             
             <div>
-                <div className=" overflow-hidden mb-6 bg-amber-100 p-2 rounded-md border border-dashed border-taupe-400
+                <div className=" overflow-hidden mb-6 bg-amber-100 p-1 -mx-1 rounded-md border border-dashed border-taupe-400
 } space-y-2">
                     <p className="text-amber-400 text-center"><b>Baby Shower Date: </b>{date.toLocaleDateString()}</p>
                     <Calendar
                         mode="single"
                         selected={date}
-                        className=" rounded-md overflow-hidden border w-full bg-white/70 backdrop-blur-sm mt-1 p-2"
                         defaultMonth={date}
                         onSelect={() => { }}
                         ISOWeek
-                        
+                        className="rounded-md overflow-hidden border w-full bg-white/70 backdrop-blur-sm mt-1 p-2"
+                        classNames={{
+                            day_button:
+                                "[&[data-selected-single=true]]:bg-amber-400 [&[data-selected-single=true]]:text-black [&[data-selected-single=true]]:focus-visible:ring-amber-400",
+                        }}
                     />
                 </div>
                 <div className="mt-4">
@@ -143,11 +146,11 @@ const RSVPForm = () => {
                     <RadioGroup value={attendance} onValueChange={setAttendance}>
                         <div className="flex items-center space-x-2">
                             <RadioGroupItem value="yes" id="yes"></RadioGroupItem>
-                            <Label className="text-taupe-400" htmlFor="yes">{strings.yesOption}</Label>
+                            <Label className="!text-taupe-600" htmlFor="yes">{strings.yesOption}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                             <RadioGroupItem value="no" id="no"></RadioGroupItem>
-                            <Label className="text-taupe-400" htmlFor="no">{strings.noOption}</Label>
+                            <Label className="!text-taupe-600" htmlFor="no">{strings.noOption}</Label>
                         </div>
                     </RadioGroup>
                 </div>
