@@ -17,7 +17,7 @@ export default function PoohThemeWrapper({
     }, [])
 
     return (
-        <div style={{ background: 'radial-gradient(circle at top, #cce7ff, #99d3f2, #82c7eb)' }} className="relative min-h-screen bg-sky-200 text-amber-400 overflow-x-hidden">
+        <div style={{ background: 'radial-gradient(circle at top, #cce7ff, #99d3f2, #82c7eb, #67a6c9ff)' }} className="relative min-h-screen bg-sky-200 text-amber-400 overflow-x-hidden">
 
             {/* PARALLAX CLOUDS */}
             <div className="pointer-events-none fixed inset-0 z-0">
@@ -27,7 +27,7 @@ export default function PoohThemeWrapper({
                     className="absolute top-20 -left-10 w-64 opacity-50 animate-[cloudDrift_60s_linear_infinite_alternate]"
                     style={{ transform: `translateY(${scrollY * 0.51}px)` }}
                 />
-                
+
                 <img
                     src="/cloud3.png"
                     className="absolute top-50 left-40 w-80 opacity-40 animate-[cloudDrift_60s_linear_infinite_alternate]"

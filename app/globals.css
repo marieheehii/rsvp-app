@@ -5,8 +5,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @keyframes cloudDrift {
-  from { transform: translateX(0px); }
-  to { transform: translateX(120px); }
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(120px);
+  }
 }
 
 @keyframes floatLeaf {
@@ -87,15 +92,15 @@
 }
 
 h1 {
-  @apply text-taupe-400 text-4xl font-bold font-elite;
+  @apply text-taupe-600 text-4xl font-bold font-elite;
 }
 
 h2 {
-  @apply text-amber-400 text-3xl font-bold font-cursive;
+  @apply text-amber-600 text-3xl font-bold font-cursive;
 }
 
 h3 {
-  @apply text-amber-400 text-2xl;
+  @apply text-amber-600 text-2xl;
 }
 
 label {
@@ -105,6 +110,7 @@ label {
 .ui-button {
   @apply bg-amber-200 text-black hover:bg-amber-300;
 }
+
 button {
   @apply text-black font-cursive;
 }
@@ -116,6 +122,12 @@ p {
 input {
   @apply bg-amber-100 border-dashed border-taupe-400
 }
+
+.rsvpformdiv {
+  @apply bg-yellow-50 border-taupe-400 rounded-md border p-2 pt-3 shadow-2xl
+}
+
+
 
 :root {
   --radius: 0.625rem;
@@ -190,6 +202,7 @@ input {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

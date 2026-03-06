@@ -11,6 +11,7 @@ import { strings } from "../utils/strings";
 import { Calendar } from "@/components/ui/calendar";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { submitRSVP } from "../actions/submitRSVP";
+import Link from "next/link";
 
 const RSVPForm = () => {
     const [name, setName] = useState("");
@@ -42,7 +43,10 @@ const RSVPForm = () => {
 
         if (result) {
             if (result.success) {
-                toast.error(strings.thankYouMessage)
+                toast.info(strings.thankYouMessage, {
+                    className: "bg-amber-200 text-black rounded-md shadow-lg"
+                }
+                )
                 setName("");
                 setEmail("");
                 setAccompany(null);
@@ -56,7 +60,7 @@ const RSVPForm = () => {
                     setErrors({ email: "Email already exists" });
                 }
             }
-        }else{
+        } else {
             toast.error(strings.supabaseError)
         }
 
@@ -79,9 +83,9 @@ const RSVPForm = () => {
         <div className="max-w-md mx-auto my-5">
             <div className="text-center">
                 <h1 className="text-2xl font-bold mb-4">{strings.title}</h1>
-            <p className="mb-6">{strings.description}</p>
+                <p className="mb-6">{strings.description}</p>
             </div>
-            
+
             <div>
                 <div className=" overflow-hidden mb-6 bg-amber-100 p-1 -mx-1 rounded-md border border-dashed border-taupe-400
 } space-y-2">
@@ -99,28 +103,33 @@ const RSVPForm = () => {
                         }}
                     />
                 </div>
-                <div className="mt-4">
-                    <Button type="button" variant={"outline"} className="w-full" onClick={openGoogleMaps}>
+                <div className="flex flex-col m-1">
+                    <Button type="button" variant={"outline"} className="w-full ui-button !font-elite" onClick={openGoogleMaps}>
                         <MapPin />
                         {strings.viewOnMapButton}
                     </Button>
+                    <Link className="ui-button flex items-center justify-center gap-2 text-center mt-2 w-full rounded-md border p-1 font-elite" href="https://my.babylist.com/hannah-y-registry">
+                        <img src="/bear.png" alt="bear" className="w-4 h-" />
+                        Baby Registry Here
+                        <img src="/bear.png" alt="bear" className="w-4 h-4" />
+                    </Link>
                 </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-10 mt-10">
-                <div>
+                <div className="rsvpformdiv">
                     <Label htmlFor="name">{strings.nameLabel}</Label>
                     <Input
                         id='name'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        />
+                    />
                     {errors.name && (
                         <p className="text-red-500, text-sm mt-1">{errors.name}</p>
                     )}
                 </div>
-                <div>
+                <div className="rsvpformdiv">
                     <Label htmlFor="email">{strings.emailLabel}</Label>
                     <Input
                         id='email'
@@ -131,7 +140,7 @@ const RSVPForm = () => {
                         <p className="text-red-500, text-sm mt-1">{errors.email}</p>
                     )}
                 </div>
-                <div>
+                <div className="rsvpformdiv">
                     <Label htmlFor="accompany">{strings.accompanyLabel}</Label>
                     <Input
                         id='name'
@@ -140,9 +149,8 @@ const RSVPForm = () => {
                         value={accompany || ""}
                         onChange={(e) => setAccompany(e.target.value)} />
                 </div>
-                <div className="bg-amber-100 p-2 rounded-md border border-dashed border-taupe-400
-} space-y-2">
-                    <Label>{strings.rsvpLabel}</Label>
+                <div className="rsvpformdiv">
+                    <Label className="mb-1">{strings.rsvpLabel}</Label>
                     <RadioGroup value={attendance} onValueChange={setAttendance}>
                         <div className="flex items-center space-x-2">
                             <RadioGroupItem value="yes" id="yes"></RadioGroupItem>

@@ -20,7 +20,7 @@ export default function Home() {
         </FadeLine>
       </section>
 
-      <div className="px-[5vh] mt-60 z-50">
+      <div className="px-[1vh] mt-60 z-50">
         <section className="min-h-[50vh] w-full grid grid-cols-12 items-center">
           <div className="col-start-1 col-end-6">
             <DelayedFade delay={1000}>
@@ -31,7 +31,7 @@ export default function Home() {
 
         <section className="min-h-[40vh] w-full grid grid-cols-12 items-center">
           <div className="col-start-8 col-end-13 text-right">
-            <DelayedFade delay={2000}>
+            <DelayedFade delay={3000}>
               <h2>...Is On The Way</h2>
             </DelayedFade>
           </div>
