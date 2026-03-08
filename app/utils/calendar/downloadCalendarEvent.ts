@@ -4,8 +4,8 @@ export function downloadCalendarEvent() {
     const title = "Baby Shower";
     const description = "Come celebrate our little honey on the way!";
     const location = strings.eventLocation ?? "";
-    const start = "20260919T130000";
-    const end = "20260919T170000";
+    const start = "20260418T130000";
+    const end = "20260418T170000";
 
     // Modern iOS detection without navigator.platform
     const isiOS =
