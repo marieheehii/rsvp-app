@@ -39,7 +39,7 @@ export default function Home() {
 
         <section className="min-h-[30vh] flex items-center justify-center z-50">
           <FadeLine>
-            <h2>09 • 19 • 26</h2>
+            <h2>05 • 19 • 26</h2>
             <Link className="ui-button p-1 rounded-md border font-cursive" href="/rsvp-form">
               Baby Shower RSVP Here
             </Link>
