@@ -98,7 +98,7 @@ const RSVPForm = () => {
     };
 
     const openGoogleMaps = () => {
-        const encodedLocation = encodeURIComponent(strings.eventLocation);
+        const encodedLocation = encodeURIComponent(strings.eventLocation ?? "");
         window.open(
             `https://www.google.com/maps/search/?api=1&query=${encodedLocation}`,
             "_blank"
