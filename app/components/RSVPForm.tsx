@@ -11,6 +11,7 @@ import { strings } from "../utils/strings";
 import { Calendar } from "@/components/ui/calendar";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { submitRSVP } from "../actions/submitRSVP";
+import { addToCalendar } from "../utils/calendar/addToCalendar";
 import Link from "next/link";
 
 const RSVPForm = () => {
@@ -69,34 +70,6 @@ const RSVPForm = () => {
         setIsLoading(false);
     }
 
-    const downloadCalendarEvent = () => {
-        const start = "20260919T130000";
-        const end = "20260919T170000";
-
-        const icsContent = `
-            BEGIN:VCALENDAR
-            VERSION:2.0
-            BEGIN:VEVENT
-            SUMMARY:Baby Shower
-            DESCRIPTION:Come celebrate our little honey on the way!
-            LOCATION:${strings.eventLocation}
-            DTSTART:${start}
-            DTEND:${end}
-            END:VEVENT
-            END:VCALENDAR
-        `;
-
-        const blob = new Blob([icsContent], { type: "text/calendar" });
-        const url = window.URL.createObjectURL(blob);
-
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "baby-shower.ics";
-        a.click();
-
-        window.URL.revokeObjectURL(url);
-    };
-
     const openGoogleMaps = () => {
         const encodedLocation = encodeURIComponent(strings.eventLocation ?? "");
         window.open(
@@ -135,7 +108,7 @@ const RSVPForm = () => {
                         type="button"
                         variant="outline"
                         className="w-full ui-button !font-elite mt-2"
-                        onClick={downloadCalendarEvent}
+                        onClick={() => addToCalendar()}
                     >
                         📅 Tap to save to calendar
                     </Button>
