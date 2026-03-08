@@ -12,6 +12,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { submitRSVP } from "../actions/submitRSVP";
 import { addToCalendar } from "../utils/calendar/addToCalendar";
+import { downloadCalendarEvent } from "../utils/calendar/downloadCalendarEvent";
 import Link from "next/link";
 
 const RSVPForm = () => {
@@ -108,7 +109,7 @@ const RSVPForm = () => {
                         type="button"
                         variant="outline"
                         className="w-full ui-button !font-elite mt-2"
-                        onClick={() => addToCalendar()}
+                        onClick={() => downloadCalendarEvent()}
                     >
                         📅 Tap to save to calendar
                     </Button>
