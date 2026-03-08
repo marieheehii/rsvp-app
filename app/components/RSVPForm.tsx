@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { toast } from "sonner"
 import { useState } from "react";
 import { MapPin } from "lucide-react";
@@ -20,6 +20,7 @@ const RSVPForm = () => {
     const [attendance, setAttendance] = useState("yes");
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isLoading, setIsLoading] = useState(false);
+    const hiddenAddEventToCalendarRef = useRef<HTMLDivElement>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -68,6 +69,33 @@ const RSVPForm = () => {
         setIsLoading(false);
     }
 
+    const downloadCalendarEvent = () => {
+        const start = "20260919T130000";
+        const end = "20260919T170000";
+
+        const icsContent = `
+            BEGIN:VCALENDAR
+            VERSION:2.0
+            BEGIN:VEVENT
+            SUMMARY:Baby Shower
+            DESCRIPTION:Come celebrate our little honey on the way!
+            LOCATION:${strings.eventLocation}
+            DTSTART:${start}
+            DTEND:${end}
+            END:VEVENT
+            END:VCALENDAR
+        `;
+
+        const blob = new Blob([icsContent], { type: "text/calendar" });
+        const url = window.URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "baby-shower.ics";
+        a.click();
+
+        window.URL.revokeObjectURL(url);
+    };
 
     const openGoogleMaps = () => {
         const encodedLocation = encodeURIComponent(strings.eventLocation);
@@ -77,13 +105,12 @@ const RSVPForm = () => {
         );
     };
 
-
     const date = new Date(strings.eventDate)
     return (
         <div className="max-w-md mx-auto my-5">
             <div className="text-center">
                 <h1 className="text-2xl font-bold mb-4">{strings.title}</h1>
-                <p className="mb-6">{strings.description}</p>
+                <p className="text-xl mb-6">{strings.description}</p>
             </div>
 
             <div>
@@ -96,7 +123,7 @@ const RSVPForm = () => {
                         defaultMonth={date}
                         onSelect={() => { }}
                         ISOWeek
-                        className="rounded-md overflow-hidden border w-full bg-white/70 backdrop-blur-sm mt-1 p-2"
+                        className="rounded-md overflow-hidden border w-full bg-white/70 backdrop-blur-sm mt-1 p-2 min-h-[320px]"
                         classNames={{
                             day_button:
                                 "[&[data-selected-single=true]]:bg-amber-400 [&[data-selected-single=true]]:text-black [&[data-selected-single=true]]:focus-visible:ring-amber-400",
@@ -104,15 +131,25 @@ const RSVPForm = () => {
                     />
                 </div>
                 <div className="flex flex-col m-1">
-                    <Button type="button" variant={"outline"} className="w-full ui-button !font-elite" onClick={openGoogleMaps}>
+                    <Button
+                        type="button"
+                        variant="outline"
+                        className="w-full ui-button !font-elite mt-2"
+                        onClick={downloadCalendarEvent}
+                    >
+                        📅 Tap to save to calendar
+                    </Button>
+                    <Button type="button" variant={"outline"} className="w-full ui-button  mt-2 !font-elite" onClick={openGoogleMaps}>
                         <MapPin />
                         {strings.viewOnMapButton}
                     </Button>
                     <Link className="ui-button flex items-center justify-center gap-2 text-center mt-2 w-full rounded-md border p-1 font-elite" href="https://my.babylist.com/hannah-y-registry">
-                        <img src="/bear.png" alt="bear" className="w-4 h-" />
+                        <img src="/bear.png" alt="bear" className="w-4 h-4" />
                         Baby Registry Here
                         <img src="/bear.png" alt="bear" className="w-4 h-4" />
                     </Link>
+                    <div ref={hiddenAddEventToCalendarRef} className="absolute opacity-0 pointer-events-noneen">
+                    </div>
                 </div>
             </div>
 

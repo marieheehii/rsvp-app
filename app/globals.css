@@ -116,7 +116,7 @@ button {
 }
 
 p {
-  @apply text-taupe-600 font-cursive;
+  @apply text-taupe-600 font-cursive text-2xl;
 }
 
 input {
