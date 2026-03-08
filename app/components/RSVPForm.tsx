@@ -11,7 +11,6 @@ import { strings } from "../utils/strings";
 import { Calendar } from "@/components/ui/calendar";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { submitRSVP } from "../actions/submitRSVP";
-import { addToCalendar } from "../utils/calendar/addToCalendar";
 import { downloadCalendarEvent } from "../utils/calendar/downloadCalendarEvent";
 import Link from "next/link";
 
@@ -88,21 +87,24 @@ const RSVPForm = () => {
             </div>
 
             <div>
-                <div className=" overflow-hidden mb-6 bg-amber-100 p-1 -mx-1 rounded-md border border-dashed border-taupe-400
-} space-y-2">
-                    <p className="text-amber-400 text-center"><b>Baby Shower Date: </b>{date.toLocaleDateString()}</p>
-                    <Calendar
-                        mode="single"
-                        selected={date}
-                        defaultMonth={date}
-                        onSelect={() => { }}
-                        ISOWeek
-                        className="rounded-md overflow-hidden border w-full bg-white/70 backdrop-blur-sm mt-1 p-2 min-h-[320px]"
-                        classNames={{
-                            day_button:
-                                "[&[data-selected-single=true]]:bg-amber-400 [&[data-selected-single=true]]:text-black [&[data-selected-single=true]]:focus-visible:ring-amber-400",
-                        }}
-                    />
+                <div className="mb-6 bg-amber-100 p-1 -mx-1 rounded-md border border-dashed border-taupe-400 space-y-2">
+                    <p className="text-amber-400 text-center">
+                        <b>Baby Shower Date: </b>{date.toLocaleDateString()}
+                    </p>
+                    <div className="min-h-[320px] w-full">
+                        <Calendar
+                            mode="single"
+                            selected={date}
+                            defaultMonth={date}
+                            onSelect={() => { }}
+                            ISOWeek
+                            className="rounded-md border w-full bg-white/70 backdrop-blur-sm mt-1 p-2 h-full"
+                            classNames={{
+                                day_button:
+                                    "[&[data-selected-single=true]]:bg-amber-400 [&[data-selected-single=true]]:text-black [&[data-selected-single=true]]:focus-visible:ring-amber-400",
+                            }}
+                        />
+                    </div>
                 </div>
                 <div className="flex flex-col m-1">
                     <Button
